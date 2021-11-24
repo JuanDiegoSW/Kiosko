@@ -2,6 +2,11 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
+      name: 'Login',
+      url: '/login',
+      icon: 'icon-star'
+  },
+  {
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer'
@@ -11,41 +16,41 @@ export const navItems: INavData[] = [
     name: 'Orders'
   },
   {
-    name: 'List',
+    name: 'Lista Compras',
     url: '/theme/colors',
     icon: 'cil-list-numbered'
   },
   {
-    name: 'Detail',
+    name: 'Detalles Orden de Compra',
     url: '/theme/typography',
     icon: 'cil-pen-alt'
   },
   {
-    name: 'Product',
+    title: true,
+    name: 'Productos'
+  },
+  {
+    name: 'Productos',
     url: '/theme/typography',
     icon: 'cil-apple'
   },
   {
-    name: 'Buyer',
-    url: '/theme/typography',
-    icon: 'icon-handbag'
+    title: true,
+    name: 'Categoria',
   },
   {
-    name: 'Customer',
-    url: '/theme/typography',
-    icon: 'cil-user'
-  },
-  {
-    name: 'Provides',
-    url: '/theme/typography',
-    icon: 'cil-dollar'
+    name: 'Lista de Categorias',
+    url: '/login',
+    icon: 'icon-ban',
+    /// nos mostrar la lista para realizar CRUD
+
   },
   {
     title: true,
-    name: 'Components'
+    name: 'Ventas'
   },
   {
-    name: 'Base',
+    name: 'Informe de Ventas',
     url: '/base',
     icon: 'icon-puzzle',
     children: [
@@ -210,7 +215,36 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Extras',
+    name: 'Usuario',
+  },
+  {
+    name: 'Lista de Usuarios',
+    url: '/login',
+    icon: 'icon-ban',
+    /// nos mostrar la lista para realizar CRUD
+
+  },
+  {
+    title: true,
+    name: 'Proveedores',
+  },
+  {
+    name: 'Lista de Proveedores',
+    url: '/login',
+    icon: 'icon-ban',
+    /// nos mostrar la lista para realizar CRUD
+
+  },
+  {
+    title: true,
+    name: 'Usuario',
+  },
+  {
+    name: 'Lista de Usuarios',
+    url: '/login',
+    icon: 'icon-ban',
+    /// nos mostrar la lista para realizar CRUD
+
   },
   {
     name: 'Pages',
