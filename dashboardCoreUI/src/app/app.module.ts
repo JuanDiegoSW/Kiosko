@@ -12,7 +12,7 @@ import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
-
+import {HttpClient, HttpClientModule} from '@angular/common/http'
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -33,6 +33,7 @@ import {
   AppHeaderModule,
   AppFooterModule,
   AppSidebarModule,
+
 } from '@coreui/angular';
 
 // Import routing module
@@ -59,6 +60,7 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
+    HttpClientModule
   ],
   declarations: [
     AppComponent,

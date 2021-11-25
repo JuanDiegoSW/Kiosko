@@ -1,7 +1,7 @@
 
 const { Schema, model } = require('mongoose');
 
-const VentasSchema = Schema({
+const VentaSchema = Schema({
     usuario : {
         type: Schema.Types.ObjectId,
         ref:'cliente'
@@ -27,4 +27,4 @@ UsuarioSchema.methods.toJSON = function() {
 }*/
 
 //exporta el modelo y crea la coleccion dentro de nuestra bd
-module.exports = model( 'Ventas', VentasSchema );
+module.exports = model( 'Ventas', VentaSchema );

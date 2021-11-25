@@ -6,21 +6,34 @@ const Usuario = require('../models/usuario');
 
 
 
-const usuariosGet = async(req = request, res = response) => {
+const usuariosGet = async(req,res) => {
 
-    const { limite = 5, desde = 0 } = req.query;
+    //const { limite = 5, desde = 0 } = req.query;
     const query = { estado: true };
-
+    
     const [ total, usuarios ] = await Promise.all([
         Usuario.countDocuments(query),
         Usuario.find(query)
-            .skip( Number( desde ) )
-            .limit(Number( limite ))
     ]);
 
     res.json({
         total,
         usuarios
+    });
+}
+
+const usuariosPostLogin = async (req, res) => {
+    const { correo, password } = req.body;
+
+    const usuario = await Usuario.findOne({correo});
+    if (!usuario) return res.status(401).send('The email doen\' exists');
+    //if (user.password !== password) return res.status(401).send('Wrong Password');
+
+	//	const token = jwt.sign({_id: user._id}, 'secretkey');
+
+    //return res.status(200).json({token});
+    res.json({
+        usuario
     });
 }
 

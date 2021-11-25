@@ -1,7 +1,7 @@
 
 const { Schema, model } = require('mongoose');
 
-const Proveedores = Schema({
+const ProveedorSchema = Schema({
     ruc: {
         type: Number,
         required: [true, 'El ruc es obligatorio'],
@@ -38,4 +38,4 @@ UsuarioSchema.methods.toJSON = function() {
 }*/
 
 //exporta el modelo y crea la coleccion dentro de nuestra bd
-module.exports = model( 'Proveedor', Proveedores );
+module.exports = model( 'Proveedor', ProveedorSchema );

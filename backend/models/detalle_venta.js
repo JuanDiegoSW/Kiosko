@@ -30,4 +30,4 @@ const DetalleVentaSchema = Schema({
 }*/
 
 //exporta el modelo y crea la coleccion dentro de nuestra bd
-module.exports = model( 'Detalle_venta', DetalleVentaSchema );
+module.exports = model( 'DetalleVenta', DetalleVentaSchema );
