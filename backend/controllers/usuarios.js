@@ -24,27 +24,26 @@ const usuariosGet = async(req,res) => {
 
 const usuariosPostLogin = async (req, res) => {
     const { correo, password } = req.body;
-
+    
     const usuario = await Usuario.findOne({correo});
     if (!usuario) return res.status(401).send('The email doen\' exists');
-    //if (user.password !== password) return res.status(401).send('Wrong Password');
+    if (usuario.password !== password) return res.status(401).send('Wrong Password');
 
 	//	const token = jwt.sign({_id: user._id}, 'secretkey');
 
     //return res.status(200).json({token});
-    res.json({
-        usuario
-    });
+    res.status(200).json({usuario})
+    
 }
 
 const usuariosPost = async(req, res = response) => {
     
-    const { nombre, correo, password, rol } = req.body;
-    const usuario = new Usuario({ nombre, correo, password, rol });
+    const { nombre, correo, password,dni , rol, img,estado, telefono,direccion } = req.body;
+    const usuario = new Usuario({ nombre, correo, password,dni , rol, img,estado, telefono,direccion });
 
     // Encriptar la contraseña
-    const salt = bcryptjs.genSaltSync();
-    usuario.password = bcryptjs.hashSync( password, salt );
+    //const salt = bcryptjs.genSaltSync();
+    //usuario.password = bcryptjs.hashSync( password, salt );
 
     // Guardar en BD
     await usuario.save();
@@ -57,7 +56,7 @@ const usuariosPost = async(req, res = response) => {
 const usuariosPut = async(req, res = response) => {
 
     const { id } = req.params;
-    const { _id, password, google, correo, ...resto } = req.body;
+    const { _id, password, correo, ...resto } = req.body;
 
     if ( password ) {
         // Encriptar la contraseña
@@ -81,9 +80,9 @@ const usuariosDelete = async(req, res = response) => {
     const { id } = req.params;
 
     // Fisicamente lo borramos
-    // const usuario = await Usuario.findByIdAndDelete( id );
+    const usuario = await Usuario.findByIdAndDelete( id );
 
-    const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
+    //const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
 
 
     res.json(usuario);
@@ -96,6 +95,7 @@ module.exports = {
     usuariosGet,
     usuariosPost,
     usuariosPut,
+    usuariosPostLogin,
     usuariosPatch,
     usuariosDelete,
 }

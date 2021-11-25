@@ -17,13 +17,14 @@ export class LoginComponent  implements OnInit{
   }
   signIn(){
     this.authService.signInUser(this.user)
-    .subscribe(
-      res => {
-        console.log(res);
-        //localStorage.setItem('token', res.token);
-        this.router.navigate(['/dashboard']);
-      },
-      err => console.log(err)
-    )
+      .subscribe(
+        res => {
+          console.log(res);
+          //localStorage.setItem('token', res.token);
+          this.router.navigate(['/dashboard']);
+        },
+        err => console.log(err)
+      )
+
   }
  }
