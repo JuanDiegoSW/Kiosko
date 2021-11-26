@@ -7,10 +7,12 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const { esRoleValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-validators-usuarios');
 
 const { usuariosGet,
+        verifyToken,
         usuariosPut,
         usuariosPost,
         usuariosDelete,
         usuariosPostLogin,
+        usuariosPostRegister,
         usuariosPatch } = require('../controllers/usuarios');
 
 const router = Router();
@@ -35,6 +37,7 @@ router.post('/',[
     validarCampos
 ], usuariosPost );
 router.post('/login', usuariosPostLogin );
+router.post('/register', usuariosPostRegister );
 
 router.delete('/:id',[
     check('id', 'No es un ID válido').isMongoId(),
@@ -44,27 +47,7 @@ router.delete('/:id',[
 
 router.patch('/', usuariosPatch );
 
-async function verifyToken(req, res, next) {
-	try {
-		if (!req.headers.authorization) {
-			return res.status(401).send('Unauhtorized Request');
-		}
-		let token = req.headers.authorization.split(' ')[1];
-		if (token === 'null') {
-			return res.status(401).send('Unauhtorized Request');
-		}
 
-		const payload = await jwt.verify(token, 'secretkey');
-		if (!payload) {
-			return res.status(401).send('Unauhtorized Request');
-		}
-		req.userId = payload._id;
-		next();
-	} catch(e) {
-		//console.log(e)
-		return res.status(401).send('Unauhtorized Request');
-	}
-}
 
 
 

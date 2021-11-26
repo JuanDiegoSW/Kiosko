@@ -10,6 +10,6 @@ export class UsuariosService {
   constructor( private http:HttpClient) { }
 
   getUsuarios(){
-    return this.http.get<any>(this.URL + '/articulos');
+    return this.http.get<any>(this.URL + '/usuarios');
   }
 }

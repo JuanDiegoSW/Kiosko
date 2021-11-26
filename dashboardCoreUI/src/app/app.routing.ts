@@ -15,22 +15,22 @@ import { UsuariosService } from './services/usuarios.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
-    path: 'listausuarios',
-    redirectTo: '/listausuarios',
-    pathMatch: 'full'
-  },/*
+    path: 'dashboard',
+    redirectTo:'/dashboard'
+  },
+
   {
     path:'login',
     component:LoginComponent
   },
   {
-    path: 'listausuarios',
-    component: UsuarioComponent
-  },*/
+    path: 'registeruser',
+    component: RegisterComponent
+  },
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -47,6 +47,10 @@ const routes: Routes = [
       {
         path: 'charts',
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
+      },
+      {
+        path: 'listaproveedores',
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'dashboard',

@@ -16,10 +16,12 @@ const usuariosGet = async(req,res) => {
         Usuario.find(query)
     ]);
 
+    return res.json(usuarios)
+    /*
     res.json({
         total,
         usuarios
-    });
+    });*/
 }
 
 const usuariosPostLogin = async (req, res) => {
@@ -85,15 +87,46 @@ const usuariosDelete = async(req, res = response) => {
 
     res.json(usuario);
 }
+const usuariosPostRegister = async (req, res) => {
+    const { email, password } = req.body;
+    const newUsuario = new Usuario({nombre, correo, password,dni , rol, img,estado, telefono,direccion});
+    await newUsuario.save();
+		const token = await jwt.sign({_id: newUsuario._id}, 'secretkey');
+    res.status(200).json({token});
+};
 
+async function verifyToken(req, res, next) {
+	try {
+		if (!req.headers.authorization) {
+			return res.status(401).send('Unauhtorized Request');
+		}
+		let token = req.headers.authorization.split(' ')[1];
+		if (token === 'null') {
+			return res.status(401).send('Unauhtorized Request');
+		}
+
+		const payload = await jwt.verify(token, 'secretkey');
+        //console.log(payload)
+		if (!payload) {
+			return res.status(401).send('Unauhtorized Request');
+		}
+		req.userId = payload._id;
+		next();
+	} catch(e) {
+		//console.log(e)
+		return res.status(401).send('Unauhtorized Request');
+	}
+}
 
 
 
 module.exports = {
     usuariosGet,
+    verifyToken,
     usuariosPost,
     usuariosPut,
     usuariosPostLogin,
+    usuariosPostRegister,
     usuariosPatch,
     usuariosDelete,
 }

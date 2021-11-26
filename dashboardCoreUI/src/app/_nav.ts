@@ -6,10 +6,10 @@ export const navItems: INavData[] = [
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer'
-  },/*
+  },
   {
     title: true,
-    name: 'Orders'
+    //name: 'Orders'
   },
   {
     name: 'Lista Compras',
@@ -71,18 +71,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Lista de Proveedores',
-    //url: '/login',
-    icon: 'icon-ban',
-    /// nos mostrar la lista para realizar CRUD
-
-  },
-  {
-    title: true,
-    name: 'Usuario',
-  },*/
-  {
-    name: 'Lista de Usuarios',
-    url: '/listausuarios',
+    url: '/listaproveedores',
     icon: 'icon-ban',
     /// nos mostrar la lista para realizar CRUD
 
