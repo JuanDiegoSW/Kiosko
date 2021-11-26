@@ -17,23 +17,31 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
+<<<<<<< HEAD
   // {
   //   path: 'listausuarios',
   //   redirectTo: '/listausuarios',
   //   pathMatch: 'full'
   // },
   /*
+=======
+  {
+    path: 'dashboard',
+    redirectTo:'/dashboard'
+  },
+
+>>>>>>> 49a289914197d7a4b9838be8d2a96bb2f2672c15
   {
     path:'login',
     component:LoginComponent
   },
   {
-    path: 'listausuarios',
-    component: UsuarioComponent
-  },*/
+    path: 'registeruser',
+    component: RegisterComponent
+  },
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -50,6 +58,10 @@ const routes: Routes = [
       {
         path: 'charts',
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
+      },
+      {
+        path: 'listaproveedores',
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'dashboard',

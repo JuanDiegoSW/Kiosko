@@ -15,9 +15,11 @@ export class UsuarioComponent implements OnInit {
   ngOnInit()  {
     this.usuarioService.getUsuarios()
       //console.log(res);
-      .subscribe(res => {
-
-      this.usuarios = res;
+      .subscribe(
+        res => {
+          console.log(res);
+          localStorage.setItem('token', res.token);
+          this.usuarios = res;
       },
       err => console.log(err)
       )
