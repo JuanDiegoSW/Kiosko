@@ -11,6 +11,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component'
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { UsuariosService } from './services/usuarios.service';
+import { ArticuloComponent } from './components/articulo/articulo.component';
+import { CategoriaComponent } from './components/categoria/categoria.component';
 
 const routes: Routes = [
   {
@@ -18,11 +20,12 @@ const routes: Routes = [
     redirectTo: '/dashboard',
     pathMatch: 'full'
   },
-  {
-    path: 'listausuarios',
-    redirectTo: '/listausuarios',
-    pathMatch: 'full'
-  },/*
+  // {
+  //   path: 'listausuarios',
+  //   redirectTo: '/listausuarios',
+  //   pathMatch: 'full'
+  // },
+  /*
   {
     path:'login',
     component:LoginComponent
@@ -71,6 +74,14 @@ const routes: Routes = [
       {
         path: 'listausuarios',
         component: UsuarioComponent
+      },
+      {
+        path: 'articulos',
+        component: ArticuloComponent
+      },
+      {
+        path: 'categorias',
+        component: CategoriaComponent
       }
 
     ]

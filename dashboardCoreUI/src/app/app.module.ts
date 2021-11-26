@@ -48,6 +48,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { ArticuloComponent } from './components/articulo/articulo.component';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { CompraComponent } from './components/compra/compra.component';
+import { VentaComponent } from './components/venta/venta.component';
+import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 
 @NgModule({
   imports: [
@@ -76,6 +81,11 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
     LoginComponent,
     RegisterComponent,
     UsuarioComponent,
+    ArticuloComponent,
+    CategoriaComponent,
+    CompraComponent,
+    VentaComponent,
+    ProveedoresComponent,
   ],
   providers: [
     AuthGuard,

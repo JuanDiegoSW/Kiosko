@@ -85,6 +85,15 @@ export const navItems: INavData[] = [
     url: '/listausuarios',
     icon: 'icon-ban',
     /// nos mostrar la lista para realizar CRUD
-
+  },
+  {
+    name: 'Lista de Articulos',
+    url: '/articulos',
+    icon: 'icon-puzzle',
+  },
+  {
+    name: 'Categorias',
+    url: '/categorias',
+    icon: 'icon-puzzle',
   }
 ];
