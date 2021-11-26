@@ -6,50 +6,36 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { UsuarioComponent } from './components/usuario/usuario.component'
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { UsuariosService } from './services/usuarios.service';
 
-export const routes: Routes = [
+const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
   },
   {
-    path: '404',
-    component: P404Component,
-    data: {
-      title: 'Page 404'
-    }
+    path: 'listausuarios',
+    redirectTo: '/listausuarios',
+    pathMatch: 'full'
+  },/*
+  {
+    path:'login',
+    component:LoginComponent
   },
   {
-    path: '500',
-    component: P500Component,
-    data: {
-      title: 'Page 500'
-    }
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
+    path: 'listausuarios',
+    component: UsuarioComponent
+  },*/
   {
     path: '',
     component: DefaultLayoutComponent,
-    data: {
-      title: 'Home'
-    },
     children: [
+
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
@@ -81,14 +67,22 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+      },
+      {
+        path: 'listausuarios',
+        component: UsuarioComponent
       }
+
     ]
   },
-  { path: '**', component: P404Component }
+  {
+    path: '**',
+    redirectTo: ''
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

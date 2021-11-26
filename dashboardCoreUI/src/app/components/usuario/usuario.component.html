@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-4" *ngFor="let task of usuarios">
+      <div class="card">
+          <div class="card-body">
+              <h3>{{task.nombre}}</h3>
+          </div>
+          <div class="card-footer">
+              {{task.date | date: 'shortDate'}}
+          </div>
+      </div>
+  </div>
+</div>

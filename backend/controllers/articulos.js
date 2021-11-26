@@ -10,18 +10,15 @@ const articulosGet = async(req = request, res = response) => {
 
     const { limite = 5, desde = 0 } = req.query;
     const query = { estado: true };
-
+    /*
     const [ total, articulos ] = await Promise.all([
         Articulo.countDocuments(query),
         Articulo.find(query)
             .skip( Number( desde ) )
             .limit(Number( limite ))
-    ]);
-
-    res.json({
-        total,
-        articulos
-    });
+    ]);*/
+    const articulos = await Articulo.find()
+    return res.json(articulos)
 }
 
 const articulosPost = async(req, res = response) => {

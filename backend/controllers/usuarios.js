@@ -1,8 +1,8 @@
 const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
 
-
 const Usuario = require('../models/usuario');
+const jwt = require('jsonwebtoken');
 
 
 
@@ -28,12 +28,10 @@ const usuariosPostLogin = async (req, res) => {
     const usuario = await Usuario.findOne({correo});
     if (!usuario) return res.status(401).send('The email doen\' exists');
     if (usuario.password !== password) return res.status(401).send('Wrong Password');
-
-	//	const token = jwt.sign({_id: user._id}, 'secretkey');
-
-    //return res.status(200).json({token});
-    res.status(200).json({usuario})
     
+        const token = jwt.sign({_id: usuario._id}, 'secretkey');
+
+        return res.status(200).json({token});    
 }
 
 const usuariosPost = async(req, res = response) => {
