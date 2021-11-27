@@ -20,7 +20,7 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
-<<<<<<< HEAD
+/*
   // {
   //   path: 'listausuarios',
   //   redirectTo: '/listausuarios',
